@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnderTraining</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: rgb(8, 65, 65);
+
+.centraliza{
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: white;
+    width: 70vw;
+   
+    border-radius: 10px;
+}
+
+}
+.main{
+ margin: 30px;
+ padding-top: 20px;
+  
+}
+
+.main > h1{
+    text-align: center;
+    margin-top: 10px;
+}
+
+input{
+    height: 30px;
+}
+
+.resultado{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-items: baseline;
+    
+}
+
+.semana1, .semana2, .semana3, .semana4, .semana5, .semana6, .semana7, .semana8, .semana9, .semana10{
+}
+
+.resultado1,
+.resultado2 {
+    width: 50%; /* Divida as colunas igualmente */
+    align-items: flex-start;
+}
+
+
+.resultado h1{
+    font-size: 24px;
+}
+
+.resultado p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+button{
+    background-color: rgb(18, 151, 151);
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    
+}
+
+button:hover{
+    background: rgb(8, 65, 65);
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+</style>
+</head>
+
+<body>
+
+    <div class="centraliza">
+        <div class="main">
+            <h1>PERIODIZAÇÃO GERSON DÓRIA</h1>
+            <br>
+            <form action="" method="get" id="form" class="form">
+                <label for="form">Qual seu 1RM?</label>
+                <input type="text" placeholder="Digite apenas números..." class="rm" id="rm">
+                
+                <button type="submit">Enviar</button>
+            </form>
+
+            <div class="resultado">
+                <div class="resultado1">
+                <h1>Semana 1:</h1>
+                <p class="semana1"></p>
+                <h1>Semana 2:</h1>
+                <p class="semana2"></p>
+                <h1>Semana 3:</h1>
+                <p class="semana3"></p>
+                <h1>Semana 4:</h1>
+                <p class="semana4"></p>
+                <h1>Semana 5:</h1>
+                <p class="semana5"></p>
+            </div>
+            <div class="resultado2">
+                <h1>Semana 6:</h1>
+                <p class="semana6"></p>
+                <h1>Semana 7:</h1>
+                <p class="semana7"></p>
+                <h1>Semana 8:</h1>
+                <p class="semana8"></p>
+                <h1>Semana 9:</h1>
+                <p class="semana9"></p>
+                <h1>Semana 10:</h1>
+                <p class="semana10"></p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+const form = document.getElementById("form");
+function periodiza()
+{
+    const form = document.getElementById("form");
+    function recebeEventoForm(evento){
+        evento.preventDefault();
+        const rm = parseFloat(form.querySelector(".rm").value);
+        function cal(valor){
+            const re = rm * (valor/100);
+            return re.toFixed(1);
+        };
+        const resultado = document.querySelector(".resultado");
+        const semana1 = document.querySelector(".semana1");
+        const semana2 = document.querySelector(".semana2");
+        const semana3 = document.querySelector(".semana3");
+        const semana4 = document.querySelector(".semana4");
+        const semana5 = document.querySelector(".semana5");
+        const semana6 = document.querySelector(".semana6");
+        const semana7 = document.querySelector(".semana7");
+        const semana8 = document.querySelector(".semana8");
+        const semana9 = document.querySelector(".semana9");
+        const semana10 = document.querySelector(".semana10");
+        semana1.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Working Set: ${cal(60)}kg 4reps/6séries <br> <br> <br>`;
+        semana2.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Working Set: ${cal(65)}kg 4reps/6séries <br> <br> <br> <br>`;
+        semana3.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Working Set: ${cal(70)}kg 4reps/5séries <br> <br>`;
+        semana4.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Terceira série: ${cal(60)}kg, 5reps <br>Working Set: ${cal(75)}kg, 4reps/4séries <br> <br>`;
+        semana5.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Terceira série: ${cal(65)}kg, 4reps <br>Working Set: ${cal(80)}kg, 3reps/4séries <br> <br>`;
+        semana6.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Terceira série: ${cal(70)}kg, 3reps <br>Working Set: ${cal(85)}kg, 3reps/3séries <br> <br>`;
+        semana7.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Terceira série: ${cal(70)}kg, 3reps <br>Quarta série: ${cal(80)}kg, 2reps <br>Working Set: ${cal(90)}kg, 2reps/2séries <br> <br>`;
+        semana8.innerHTML = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Working Set: ${cal(70)}kg 3reps/6séries <br> <br>`;
+        semana9.innerHTML = `DESCANSAR 4 DIAS <br> Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Working Set: ${cal(70)}kg, 3reps/6séries <br> <br>`;
+        semana10.innerHTML  = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Terceira série: ${cal(70)}kg 3reps <br>Quarta série: ${cal(80)}kg, 2reps <br>Quinta série: ${cal(90)}kg, 1rep <br>Sexta série: ${100}kg, 1rep <br>Working Set: ${cal(110)}kg, 1rep <br> <br>`;
+
+
+    }
+    
+form.addEventListener("submit", recebeEventoForm);
+}
+
+periodiza();
+</script>
+</body>
+
+</html>
