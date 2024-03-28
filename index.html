@@ -157,19 +157,24 @@ function periodiza()
 const conteudo = document.getElementById('conteudo');
   
 botaoCopiar.addEventListener('click', () => {
-     
+  // Seleciona o conteúdo dentro do elemento 'conteudo'
   const textoParaCopiar = conteudo.innerText;
 
+  // Cria um elemento textarea temporário para colocar o texto a ser copiado
   const textareaTemporario = document.createElement('textarea');
   textareaTemporario.value = textoParaCopiar;
 
+  // Adiciona o textarea à página e o seleciona
   document.body.appendChild(textareaTemporario);
   textareaTemporario.select();
 
+  // Copia o conteúdo selecionado para a área de transferência
   document.execCommand('copy');
 
+  // Remove o textarea temporário
   document.body.removeChild(textareaTemporario);
 
+  // Mostra uma mensagem de confirmação
   alert('Conteúdo copiado para a área de transferência!');
 });
 
@@ -222,13 +227,6 @@ periodiza();
 
 
 
-
-    }
-    
-form.addEventListener("submit", recebeEventoForm);
-}
-
-periodiza();
 </script>
 </body>
 
