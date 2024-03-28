@@ -48,8 +48,7 @@ input{
     
 }
 
-.semana1, .semana2, .semana3, .semana4, .semana5, .semana6, .semana7, .semana8, .semana9, .semana10{
-}
+
 
 .resultado1,
 .resultado2 {
@@ -67,7 +66,7 @@ input{
     font-weight: 400;
 }
 
-button{
+.botao{
     background-color: rgb(18, 151, 151);
     margin-top: 20px;
     width: 100%;
@@ -77,10 +76,27 @@ button{
 
 button:hover{
     background: rgb(8, 65, 65);
+   
 }
 form{
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 500px){
+.main>h1{
+    font-size: 24px;
+}
+
+.resultado{
+    flex-direction: column;
+}
+
+.resultado1, .resultado2{
+    width: 100%;
+}
+
+
 }
 
 
@@ -97,43 +113,73 @@ form{
                 <label for="form">Qual seu 1RM?</label>
                 <input type="text" placeholder="Digite apenas números..." class="rm" id="rm">
                 
-                <button type="submit" style="margin-bottom: 30px;">Enviar</button>
+                <button type="submit" style="margin-bottom: 30px;" class="botao">Enviar</button>
+            
             </form>
 
-            <div class="resultado">
+            <div class="resultado" id="conteudo">
                 <div class="resultado1">
-                <h1>Semana 1:</h1>
+                <h1>Semana 1: <br></h1>
                 <p class="semana1"></p>
-                <h1>Semana 2:</h1>
+                <h1>Semana 2: <br></h1>
                 <p class="semana2"></p>
-                <h1>Semana 3:</h1>
+                <h1>Semana 3: <br></h1>
                 <p class="semana3"></p>
-                <h1>Semana 4:</h1>
+                <h1>Semana 4: <br></h1>
                 <p class="semana4"></p>
-                <h1>Semana 5:</h1>
+                <h1>Semana 5:<br></h1>
                 <p class="semana5"></p>
             </div>
             <div class="resultado2">
-                <h1>Semana 6:</h1>
+                <h1>Semana 6: <br></h1>
                 <p class="semana6"></p>
-                <h1>Semana 7:</h1>
+                <h1>Semana 7: <br></h1>
                 <p class="semana7"></p>
-                <h1>Semana 8:</h1>
+                <h1>Semana 8: <br></h1>
                 <p class="semana8"></p>
-                <h1>Semana 9:</h1>
+                <h1>Semana 9: <br></h1>
                 <p class="semana9"></p>
-                <h1>Semana 10:</h1>
+                <h1>Semana 10: <br></h1>
                 <p class="semana10"></p>
             </div>
             </div>
         </div>
+        <button class="botao"  id="botao-copiar" style="width: 100%; margin: 0 auto; margin-bottom: 30px; display: none;">Copiar Conteúdo</button>
+        <br><br>
     </div>
+
+ 
     <script>
 const form = document.getElementById("form");
 function periodiza()
 {
+    const botaoCopiar = document.getElementById('botao-copiar');
+const conteudo = document.getElementById('conteudo');
+  
+botaoCopiar.addEventListener('click', () => {
+     
+  const textoParaCopiar = conteudo.innerText;
+
+  const textareaTemporario = document.createElement('textarea');
+  textareaTemporario.value = textoParaCopiar;
+
+  document.body.appendChild(textareaTemporario);
+  textareaTemporario.select();
+
+  document.execCommand('copy');
+
+  document.body.removeChild(textareaTemporario);
+
+  alert('Conteúdo copiado para a área de transferência!');
+});
+
     const form = document.getElementById("form");
     function recebeEventoForm(evento){
+        botaoCopiar.style.display = "block";
+        botaoCopiar.style.width = "50%";
+        botaoCopiar.style.marginBottom = "30px";
+
+
         evento.preventDefault();
         const rm = parseFloat(form.querySelector(".rm").value);
         function cal(valor){
@@ -162,6 +208,20 @@ function periodiza()
         semana9.innerHTML = `DESCANSAR 4 DIAS <br> Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Working Set: ${cal(70)}kg, 3reps/6séries <br> <br>`;
         semana10.innerHTML  = `Primeira série: ${cal(50)}kg, 8reps <br> Segunda série: ${cal(55)}kg, 5reps <br>Terceira série: ${cal(70)}kg 3reps <br>Quarta série: ${cal(80)}kg, 2reps <br>Quinta série: ${cal(90)}kg, 1rep <br>Sexta série: ${cal(100)}kg, 1rep <br>Working Set: ${cal(110)}kg, 1rep <br> <br>`;
         resultado.style.display = "flex";
+
+
+    }
+    
+form.addEventListener("submit", recebeEventoForm);
+}
+
+
+
+periodiza();
+
+
+
+
 
     }
     
